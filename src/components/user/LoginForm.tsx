@@ -61,7 +61,6 @@ export default function LoginForm() {
         isLoading={isLoading}
       />
       <Input
-        type="password"
         placeholder="Password"
         name="password"
         isLoading={isLoading}
@@ -75,7 +74,7 @@ export default function LoginForm() {
             ForgotPassword?
           </span>
         </Link>
-        <Link className="text-sm mt-3 text-right" href={"/register"}>
+        <Link className="text-sm mt-3 md:text-right" href={"/register"}>
           Dont have an account?{" "}
           <span className="underline hover:text-chestnut-600 text-chestnut-950">
             Register

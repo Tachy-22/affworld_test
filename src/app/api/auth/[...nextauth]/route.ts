@@ -4,9 +4,9 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import findUser from "@/actions/user/findUser";
-import { Awaitable, RequestInternal, User } from "next-auth";
+import { Awaitable,  User } from "next-auth";
 
-export const authOptions = {
+const authOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({

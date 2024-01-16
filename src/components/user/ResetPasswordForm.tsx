@@ -53,7 +53,6 @@ export default function ResetPasswordForm({ userId }: { userId: string }) {
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <Input
-            type="password"
             name="password"
             placeholder="New Password"
             disabled={isLoading}

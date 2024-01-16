@@ -65,7 +65,7 @@ export default function RegisterForm() {
     <FormUi onSubmit={handleSubmit} title={`Sign up`}>
       <Input name="name" type="text" placeholder="John Doe" />
       <Input name="email" type="text" placeholder="johndoe@gmail.com" />
-      <Input name="password" type="password" placeholder="12345" />
+      <Input name="password"  placeholder="12345" />
       <SubmitButton isLoading={isLoading}>Sign Up</SubmitButton>
       <Status status={status} />
       <Link className="text-sm mt-3 text-right" href={"/login"}>

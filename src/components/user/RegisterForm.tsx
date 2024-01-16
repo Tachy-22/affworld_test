@@ -5,28 +5,36 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import findUser from "@/actions/user/findUser";
 import createUser from "@/actions/user/createUser";
+import Image from "next/image";
+import FormUi from "../ui/form/FormUi";
+import Input from "../ui/form/Input";
+import Status from "../ui/form/Status";
+import SubmitButton from "../ui/form/SubmitButton";
 
 export default function RegisterForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
   const router = useRouter();
+  const [status, setStatus] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const { email, name, password } = Object.fromEntries(formData.entries());
+    setIsLoading(true);
 
     if (!name || !email || !password) {
-      setError("All fields are necessary.");
+      setStatus("All fields are necessary.");
+      setIsLoading(false);
       return;
     }
 
     try {
-      const user = await findUser(email);
+      const user = await findUser(email as string);
 
       if (user) {
-        setError("User already exists.");
+        setStatus("User already exists.");
+        setIsLoading(false);
+
         return;
       } else {
         const user = await createUser({
@@ -37,54 +45,35 @@ export default function RegisterForm() {
 
         if (user) {
           const form = e.target as HTMLFormElement;
+          setIsLoading(false);
           form.reset();
-          router.push("/");
-          console.log("User registration suces.");
+          router.push("/login");
+          console.log("User registration sucess.");
         } else {
+          setIsLoading(false);
+
           console.log("User registration failed.");
         }
       }
     } catch (error) {
-      console.log("Error during registration: ", error);
+      setIsLoading(false);
+      console.error("error during registration: ", error);
     }
   };
 
   return (
-    <div className="grid place-items-center h-screen">
-      <div className="shadow-lg p-5 rounded-lg border-t-4 border-green-400">
-        <h1 className="text-xl font-bold my-4">Register</h1>
-
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          <input
-            onChange={(e) => setName(e.target.value)}
-            type="text"
-            placeholder="Full Name"
-          />
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            type="text"
-            placeholder="Email"
-          />
-          <input
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            placeholder="Password"
-          />
-          <button className="rounded-md w-full p-2 bg-chestnut-500 transition-colors duration-500 hover:bg-chestnut-700 text-white">
-            Register
-          </button>
-
-          {error && (
-            <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
-              {error}
-            </div>
-          )}
-
-          <Link className="text-sm mt-3 text-right" href={"/login"}>
-            Already have an account? <span className="underline">Login</span>
-          </Link>
-        </form>
-      </div>
-    </div>
+    <FormUi onSubmit={handleSubmit} title={`Sign up`}>
+      <Input name="name" type="text" placeholder="John Doe" />
+      <Input name="email" type="text" placeholder="johndoe@gmail.com" />
+      <Input name="password" type="password" placeholder="12345" />
+      <SubmitButton isLoading={isLoading}>Sign Up</SubmitButton>
+      <Status status={status} />
+      <Link className="text-sm mt-3 text-right" href={"/login"}>
+        Already have an account?{" "}
+        <span className="underline hover:text-chestnut-600 text-chestnut-950">
+          Login
+        </span>
+      </Link>
+    </FormUi>
   );
 }

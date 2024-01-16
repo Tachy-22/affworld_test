@@ -14,6 +14,7 @@ export const authOptions = {
       credentials: { email: {}, password: {} },
       async authorize(credentials) {
         try {
+          console.log("finding user:");
           const user = await findUser(credentials?.email as string);
           console.log({ user });
           if (!user) {

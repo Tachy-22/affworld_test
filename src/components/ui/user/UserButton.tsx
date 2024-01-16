@@ -11,7 +11,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import { useSession } from "next-auth/react";
 import React from "react";
-import LogOutButton from "./LogOutButton";
+import LogOutButton from "../boarding/LogOutButton";
+import returnInitials from "@/functions/returnInitials";
 
 const UserButton = () => {
   const { data: session } = useSession();
@@ -20,13 +21,17 @@ const UserButton = () => {
     <div>
       <DropdownMenu>
         <DropdownMenuTrigger className="rounded-full">
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>CN</AvatarFallback>
+          <Avatar className="text-chestnut-950  font-bold">
+            <AvatarImage />
+            <AvatarFallback>
+              {returnInitials(session?.user?.name as string)}
+            </AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel className="capitalize">{session?.user?.name}</DropdownMenuLabel>
+          <DropdownMenuLabel className="capitalize">
+            {session?.user?.name}
+          </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>{session?.user?.email}</DropdownMenuItem>
           <DropdownMenuItem>

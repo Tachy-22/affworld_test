@@ -2,7 +2,7 @@
 
 import { transporter, mailOptions } from "@/configs/mailer/transporter";
 
-const sendMail = async (email: string) => {
+const sendMail = async (email: string, resetLink: string) => {
   try {
     const result = await transporter.sendMail({
       ...mailOptions,
@@ -78,7 +78,7 @@ const sendMail = async (email: string) => {
             <p>Hello user,</p>
             <p>You've requested a password reset for your Asecs account. Click the button below to proceed:</p>
             <div style="text-align: center;">
-                <a href="https://ansecs.vercel.app/" class="button">Reset Password</a>
+                <a href= "${resetLink}" class="button">Reset Password</a>
             </div>
         </div>
         <div class="disclaimer">

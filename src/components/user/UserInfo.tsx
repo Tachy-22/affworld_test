@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
-import LogOutButton from "../ui/LogOutButton";
+import LogOutButton from "../ui/boarding/LogOutButton";
 
 export default function UserInfo() {
   const { data: session } = useSession();
@@ -20,7 +20,7 @@ export default function UserInfo() {
         <div>
           Email: <span className="font-bold">{session?.user?.email}</span>
         </div>
-      <LogOutButton/>
+        <LogOutButton />
       </div>
     </div>
   );

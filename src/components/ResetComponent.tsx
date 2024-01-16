@@ -1,77 +1,68 @@
 "use client";
 
 import sendMail from "@/actions/mailer/sendMail";
+import findUser from "@/actions/user/findUser";
 import Image from "next/image";
-import { FormEvent, useCallback } from "react";
+import { FormEvent, useCallback, useState } from "react";
+import Input from "./ui/form/Input";
+import FormUi from "./ui/form/FormUi";
+import SubmitButton from "./ui/form/SubmitButton";
+import Status from "./ui/form/Status";
 
 const ResetComponent = () => {
+  const [status, setStatus] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleEmailSending = useCallback((email: string) => {
+    const currentURL = window?.location?.href;
+    const parsedUrl = new URL(currentURL);
+    const origin = parsedUrl.origin;
     const sendResetLink = async () => {
-      const result = await sendMail(email);
+      const user = await findUser(email);
+
+      if (!user) {
+        setStatus("User doesn't exists.");
+        setIsLoading(false);
+        return;
+      }
+      setStatus("success");
+      setIsLoading(false);
+      const resetLink = `${origin}/reset-password/${user?.id}`;
+      const result = await sendMail(email, resetLink);
       return result;
     };
     try {
       sendResetLink().then((res) => {
+        setIsLoading(false);
         console.log({ res });
       });
     } catch (error) {
-      console.log({ error });
+      setIsLoading(false);
+      console.error({ error });
     }
   }, []);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const formData = new FormData(e.target as HTMLFormElement);
     const { email } = Object.fromEntries(formData.entries());
-    console.log("Form data:", email);
+
     handleEmailSending(email as string);
   };
 
   return (
-    <div
-      className="min-h-screen max-w-full flex justify-center items-center "
-      style={{ background: "url(/bg.jpg)", backgroundSize: "cover" }}
-    >
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-3 w-[40vw] max-w-[25rem] md:min-w-[40vw] min-w-[80vw] h-full rounded-xl backdrop-blur-lg border border-chestnut-100/70 pb-[3rem] px-[7rem]"
-      >
-        <div className="flex justify-center items-center ">
-          {" "}
-          <Image
-            width={317}
-            height={320}
-            alt="logo"
-            className=" w-[8rem] -mb-[1rem] "
-            src="/anon_logo.png"
-          />
-        </div>
-        <p className="text-sm md:text-[0.9rem] pb-[1rem] text-start">
-          Enter the email address associated with your account and we`ll send
-          you a link to reset your password.
-        </p>
-        <div className="flex flex-col gap-1">
-          <label htmlFor="email">Email:</label>
-          <br />
-          <input
-            type="email"
-            name="email"
-            id="email"
-            required
-            className="border border-chestnut-300 rounded-lg px-3 py-2 outline-none focus:outline focus:outline-chestnut-400 focus:border-transparent bg-chestnut-50"
-          />
-        </div>
+    <FormUi title={`Reset Password`} onSubmit={handleSubmit}>
+      <p className="text-sm md:text-[0.9rem] pb-[1rem] text-start">
+        Enter the email address associated with your account and we`ll send you
+        a link to reset your password.
+      </p>
+      <Input isLoading={isLoading} type="email" name="email" required />
 
-        <button
-          className="rounded-md w-full p-2 bg-chestnut-500 transition-colors duration-500 hover:bg-chestnut-700 text-white"
-          type="submit"
-        >
-          Submit Email
-        </button>
-      </form>
-    </div>
+      <SubmitButton isLoading={isLoading}>Submit Email</SubmitButton>
+      <Status status={status} />
+    </FormUi>
   );
 };
 

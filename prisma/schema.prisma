@@ -15,5 +15,15 @@ model User {
   name           String
   email          String  @unique
   password      String
+  secrets Secret[]
+}
+
+
+model Secret {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  body           String
+  date          String  @unique
+  author        User      @relation(fields: [authorId], references: [id])
+  authorId      String    @db.ObjectId
 
 }

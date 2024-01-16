@@ -5,7 +5,7 @@ const SignInButton = () => {
   return (
     <Link
       href="/login"
-      className="bg-chestnut-500 text-white font-bold px-6 py-2  rounded-md"
+      className="bg-chestnut-600/90 transition-colors dutarion-100 hover:bg-chestnut-500/80 text-white font-bold px-6 py-2  rounded-md"
     >
       SignIn
     </Link>

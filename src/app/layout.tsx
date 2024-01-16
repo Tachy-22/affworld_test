@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/nav";
 import { getServerSession } from "next-auth";
 import { AuthProvider } from "./Providers";
+import StoreProvider from "@/providers/StoreProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,10 +21,14 @@ export default async function RootLayout({
   const session = await getServerSession();
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-chestnut-200  min-h-screen relative -mt-[4rem]`}>
+      <body
+        className={`${inter.className} bg-chestnut-200  min-h-screen relative -mt-[4rem]`}
+      >
         <AuthProvider>
-          <Nav session={session} />
-          {children}
+          <StoreProvider>
+            <Nav session={session} />
+            {children}
+          </StoreProvider>
         </AuthProvider>
       </body>
     </html>

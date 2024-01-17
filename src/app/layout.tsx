@@ -22,7 +22,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} bg-chestnut-200  min-h-screen relative -mt-[4rem]`}
+        className={`${inter.className} bg-chestnut-200  min-h-[100dvh] relative -mt-[4rem]`}
       >
         <AuthProvider>
           <StoreProvider>

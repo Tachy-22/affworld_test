@@ -13,7 +13,7 @@ const FormUi = ({
 }) => {
   return (
     <div
-      className="min-h-screen max-w-full flex justify-center items-center px-6 lg:px-0 md:pt-0 pt-[4rem]"
+      className="min-h-[100dvh] max-w-full flex justify-center items-center px-6 lg:px-0 md:pt-0 pt-[4rem]"
       style={{
         background: "url(/bg.jpg)",
         backgroundSize: "cover",

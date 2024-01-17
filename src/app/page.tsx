@@ -13,7 +13,7 @@ export default async function Home() {
       className="flex min-h-screen flex-col pt-[4rem] items-center justify-center"
     >
       <div className="max-w-7xl h-full xl:px-0 px-[10%]  items-center flex justify-between mx-auto">
-        <section className="text-center lg:text-start flex-col flex w-full gap-[2rem]  h-full">
+        <section className="text-start flex-col flex w-full gap-[2rem]  h-full">
           <h1 className="text-5xl md:text-6xl font-bold">
             {" "}
             Send Secret Anonymous Messages Online

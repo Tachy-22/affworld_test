@@ -45,12 +45,12 @@ const SideNav = ({ secrets }: { secrets: SecretType[] }) => {
       className={`   transition-all duration-700 bg-chestnut-950 h-full flex flex-col text-chestnut-50   ${
         isMobileMenuOpen
           ? " w-[30vw] lg:w-[20vw] relative"
-          : "-translate-x-full absolute left-0 "
+          : "-translate-x-full absolute left-0 z-50 "
       } `}
     >
       <button
         onClick={toggleMobileMenu}
-        className="rounded-md md:hidden absolute top-[0.5rem] right-0  translate-x-[2rem] text-chestnut-950 bg-chestnut-950/10 p-1 flex justify-center items-center  text-2xl z-50 "
+        className="rounded-md  absolute top-[0.5rem] right-0  translate-x-[2rem] text-chestnut-950 bg-chestnut-950/10 p-1 flex justify-center items-center  text-2xl z-50"
       >
         {!isMobileMenuOpen ? " →" : "  ←"}
       </button>

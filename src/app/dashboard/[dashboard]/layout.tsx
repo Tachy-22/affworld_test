@@ -11,7 +11,7 @@ const DashLayout = async ({
 }) => {
   const secrets = await getSecrets();
   return (
-    <div className="pt-[4rem]  flex min-h-[100dvh] h-full fixed w-full">
+    <div className="pt-[4rem]  flex min-h-screen h-full fixed w-full">
       <SideNav secrets={secrets as SecretType[]} />
       {children}
     </div>

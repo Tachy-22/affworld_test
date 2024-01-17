@@ -22,6 +22,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
+        style={{
+          background: "url(/bg.jpg)",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}
         className={`${inter.className} bg-chestnut-200  min-h-screen relative -mt-[4rem]`}
       >
         <AuthProvider>

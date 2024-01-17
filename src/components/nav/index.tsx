@@ -37,7 +37,7 @@ const Nav = ({ session }: { session: Session | null }) => {
           />
         </Link>
         <DesktopMenu session={session} />
-        <MobileMenu />
+        <MobileMenu session={session} />
       </div>
     </div>
   );

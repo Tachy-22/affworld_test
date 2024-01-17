@@ -2,15 +2,12 @@
 
 import Link from "next/link";
 import { FormEvent, useState } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { useDispatch } from "react-redux";
 
 import { updateUserData } from "@/lib/redux-toolkit/boardSlice";
-import { useAppSelector } from "@/lib/redux-toolkit/hooks";
 import findUser from "@/actions/user/findUser";
-import { Button } from "../ui/button";
 import FormUi from "../ui/form/FormUi";
 import Input from "../ui/form/Input";
 import SubmitButton from "../ui/form/SubmitButton";
@@ -19,9 +16,21 @@ import Status from "../ui/form/Status";
 export default function LoginForm() {
   const dispatch = useDispatch();
   const router = useRouter();
-
+  const { data: session } = useSession();
   const [status, setStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const loggedInStatus = session?.user?.email;
+
+  if (loggedInStatus) {
+    return (
+      <div className="pt-[4rem]">
+        You are logged In already: Go to{" "}
+        <Link className="underline" href="/">
+          home
+        </Link>
+      </div>
+    );
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -60,11 +69,7 @@ export default function LoginForm() {
         placeholder="Email"
         isLoading={isLoading}
       />
-      <Input
-        placeholder="Password"
-        name="password"
-        isLoading={isLoading}
-      />
+      <Input placeholder="Password" name="password" isLoading={isLoading} />
       <SubmitButton isLoading={isLoading}>Login</SubmitButton>
       <Status status={status} />
 

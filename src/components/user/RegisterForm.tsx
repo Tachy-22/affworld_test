@@ -5,16 +5,31 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import findUser from "@/actions/user/findUser";
 import createUser from "@/actions/user/createUser";
-import Image from "next/image";
 import FormUi from "../ui/form/FormUi";
 import Input from "../ui/form/Input";
 import Status from "../ui/form/Status";
 import SubmitButton from "../ui/form/SubmitButton";
+import { useSession } from "next-auth/react";
 
 export default function RegisterForm() {
   const router = useRouter();
+  const { data: session } = useSession();
+
   const [status, setStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const loggedInStatus = session?.user?.email;
+
+  if (loggedInStatus) {
+    return (
+      <div className="pt-[4rem]">
+        You are logged In already: Go to{" "}
+        <Link className="underline" href="/">
+          home
+        </Link>
+      </div>
+    );
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,11 +63,8 @@ export default function RegisterForm() {
           setIsLoading(false);
           form.reset();
           router.push("/login");
-          console.log("User registration sucess.");
         } else {
           setIsLoading(false);
-
-          console.log("User registration failed.");
         }
       }
     } catch (error) {
@@ -65,7 +77,7 @@ export default function RegisterForm() {
     <FormUi onSubmit={handleSubmit} title={`Sign up`}>
       <Input name="name" type="text" placeholder="John Doe" />
       <Input name="email" type="text" placeholder="johndoe@gmail.com" />
-      <Input name="password"  placeholder="12345" />
+      <Input name="password" placeholder="12345" />
       <SubmitButton isLoading={isLoading}>Sign Up</SubmitButton>
       <Status status={status} />
       <Link className="text-sm mt-3 text-right" href={"/login"}>

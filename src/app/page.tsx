@@ -1,17 +1,10 @@
+import SignInButton from "@/components/ui/boarding/SignInButton";
 import SignUpButton from "@/components/ui/boarding/SignUpButton";
 import Image from "next/image";
 
 export default async function Home() {
   return (
-    <main
-      style={{
-        background: "url(/bg.jpg)",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-      }}
-      className="flex min-h-screen flex-col pt-[4rem] items-center justify-center"
-    >
+    <main className="flex min-h-screen flex-col pt-[4rem] items-center justify-center">
       <div className="max-w-7xl h-full xl:px-0 px-[10%]  items-center flex justify-between mx-auto">
         <section className="text-start flex-col flex w-full gap-[2rem]  h-full">
           <h1 className="text-5xl md:text-6xl font-bold">
@@ -26,8 +19,7 @@ export default async function Home() {
             send and recieve anonymous compliments easily for free!
           </p>
           <div className="">
-            {" "}
-            <SignUpButton />
+            <SignInButton />
           </div>
         </section>
         <section className="lg:flex hidden w-fit ">

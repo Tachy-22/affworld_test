@@ -38,8 +38,8 @@ const WorkSpace = ({
 
   return (
     <div className=" h-full w-full overflow-auto flex md:flex-row flex-col  text-black border-r bg-white/90  ">
-      <div className="min-h-[35vh] h-[35vh] md:h-full   md:w-[35rem] flex flex-col gap-4 border-r  border-gray-300 pt-3 ">
-        <h2 className="text-2xl font-semibold mb-3 px-6 capitalize flex justify-between items-center">
+      <div className="min-h-[60vh] md:h-full   md:w-[35rem] flex flex-col gap-4 border-r  border-gray-300 pt-3 ">
+        <h2 className="text-2xl font-semibold mb-3 px-4 pt-[1rem] md:px-6 capitalize flex justify-between items-center">
           {category.split("-").join(" ")}
           <p className="text-sm bg-chestnut-500 text-white flex items-center justify-center p-2 h-[1.5rem] w-[1.5rem] rounded-full ">
             {" "}

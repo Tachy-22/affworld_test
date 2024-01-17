@@ -5,10 +5,7 @@ import SecretCard from "./SecretCard";
 
 const Preview = ({ currentSecret }: { currentSecret: SecretType }) => {
   return (
-    <div className=" bg-chestnut-50 h-full flex-grow flex-col flex px-4 py-[2rem] md:border-0 border-t items-center ">
-      <label htmlFor="note-title" className=" mb-1 font-medium hidden">
-        Secret Name
-      </label>
+    <div className=" bg-chestnut-50 h-fit flex-grow flex-col flex px-4 py-[1rem] md:border-0 border-t items-center justify-center  ">
       {currentSecret && (
         <div
           style={{
@@ -16,7 +13,7 @@ const Preview = ({ currentSecret }: { currentSecret: SecretType }) => {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
           }}
-          className="flex flex-col w-[367px] bg-white  border rounded-[4rem] p-2 justify-top  py-[4rem] items-center  h-[750px]  "
+          className="flex  flex-col w-[367px]   border rounded-[3.5rem] p-2 justify-top  py-[4rem] items-center bg-chestnut-300/30 h-[750px] md:scale-100 scale-[95%] "
         >
           <div className="border-t border-black w-full" />
           <div className="flex justify-between items-center  w-full px-4 ">

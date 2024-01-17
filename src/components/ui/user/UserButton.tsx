@@ -23,7 +23,7 @@ const UserButton = () => {
         <DropdownMenuTrigger className="rounded-full">
           <Avatar className="text-chestnut-950  font-bold">
             <AvatarImage />
-            <AvatarFallback>
+            <AvatarFallback className="bg-chestnut-200">
               {returnInitials(session?.user?.name as string)}
             </AvatarFallback>
           </Avatar>

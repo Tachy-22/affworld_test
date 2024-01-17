@@ -8,7 +8,7 @@ const SecretsBoard = () => {
   const { secrets } = useAppSelector((state) => state.board);
   const dummyArray = Array.from({ length: 6 }, (_, i) => i);
   return (
-    <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6 w-full overflow-y-auto ">
+    <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6 w-full overflow-auto ">
       {secrets?.map((secret, id) => (
         <SecretCard key={id} currentSecret={secret} />
       ))}

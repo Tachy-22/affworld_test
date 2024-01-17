@@ -26,7 +26,7 @@ const Nav = ({ session }: { session: Session | null }) => {
 
   return (
     <div className="flex w-full sticky top-0 left-0 backdrop-blur-2xl h-[4rem] backdrop-brightness-75 z-50">
-      <div className=" max-w-7xl xl:px-0  px-[10%]  w-full flex justify-between mx-auto items-center gap-4">
+      <div className=" max-w-7xl xl:px-0  px-[5%]  w-full flex justify-between mx-auto items-center gap-4">
         <Link href="/" className="flex justify-start  items-center w-full ">
           <Image
             width={317}

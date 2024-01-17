@@ -23,16 +23,16 @@ export default createSecret;
 
 export const validateSecretCreation = async (authorId: string) => {
   try {
-    const secrets = (await prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
       where: {
         id: authorId,
       },
       include: {
         secrets: true,
       },
-    })) as unknown as SecretType[];
+    });
 
-    if (secrets?.length > 1) {
+    if (user?.secrets?.length as number > 1) {
       return false;
     } else {
       return true;

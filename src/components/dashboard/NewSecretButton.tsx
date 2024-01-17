@@ -50,7 +50,9 @@ const NewSecretButton = () => {
             {isValid ? (
               <NewSecretForm />
             ) : (
-              <p className="text-red-400">Sorry, you have reached your one secret limit !</p>
+              <p className="text-red-400">
+                Sorry, you have reached your one secret limit !
+              </p>
             )}
           </AlertDialogDescription>
         </AlertDialogHeader>

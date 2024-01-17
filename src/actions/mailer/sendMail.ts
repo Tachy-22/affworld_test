@@ -2,7 +2,7 @@
 
 import { transporter, mailOptions } from "@/configs/mailer/transporter";
 
-const sendMail = async (email: string, resetLink: string) => {
+const sendMail = async (email: string, resetLink: string, name: string) => {
   try {
     const result = await transporter.sendMail({
       ...mailOptions,
@@ -13,7 +13,7 @@ const sendMail = async (email: string, resetLink: string) => {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Company Name - Password Reset</title>
+    <title>Anon - Password Reset</title>
     <style type="text/css">
         body {
             margin: 0;
@@ -73,10 +73,10 @@ const sendMail = async (email: string, resetLink: string) => {
 </head>
 <body>
     <div class="container">
-        <div class="header">Ansecs - Password Reset</div>
+        <div class="header">Anon - Password Reset</div>
         <div class="message-content">
-            <p>Hello user,</p>
-            <p>You've requested a password reset for your Asecs account. Click the button below to proceed:</p>
+            <p>Hello ${name},</p>
+            <p>You've requested a password reset for your Anon account. Click the button below to proceed:</p>
             <div style="text-align: center;">
                 <a href= "${resetLink}" class="button">Reset Password</a>
             </div>
@@ -90,7 +90,7 @@ const sendMail = async (email: string, resetLink: string) => {
 
 
 `,
-      subject: "ANSEC Password Reset",
+      subject: "Anon Password Reset",
     });
     console.log({ result });
     return result;

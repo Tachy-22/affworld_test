@@ -3,7 +3,7 @@ import React, { useCallback, useState } from "react";
 import Preview from "./Preview";
 import SecretList from "./SecretList";
 import NewSecretButton from "./NewSecretButton";
-import { useAppSelector } from "@/lib/redux-toolkit/hooks";
+import { useAppSelector } from "@/configs/redux-toolkit/hooks";
 
 const WorkSpace = ({
   params,

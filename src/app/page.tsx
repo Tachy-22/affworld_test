@@ -1,5 +1,5 @@
 import SignInButton from "@/components/ui/boarding/SignInButton";
-import SignUpButton from "@/components/ui/boarding/SignUpButton";
+
 import Image from "next/image";
 
 export default async function Home() {

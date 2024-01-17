@@ -3,10 +3,10 @@ import { useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useAppSelector } from "@/lib/redux-toolkit/hooks";
+import { useAppSelector } from "@/configs/redux-toolkit/hooks";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateSecrets } from "@/lib/redux-toolkit/boardSlice";
+import { updateSecrets } from "@/configs/redux-toolkit/boardSlice";
 import { Skeleton } from "@/components/ui/skeleton";
 import returnInitials from "@/functions/returnInitials";
 

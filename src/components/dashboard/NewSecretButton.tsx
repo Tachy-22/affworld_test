@@ -13,7 +13,7 @@ import {
 import React, { useEffect, useState } from "react";
 import NewSecretForm from "./NewSecretForm";
 import { validateSecretCreation } from "@/actions/secrets/createSecret";
-import { useAppSelector } from "@/lib/redux-toolkit/hooks";
+import { useAppSelector } from "@/configs/redux-toolkit/hooks";
 
 const NewSecretButton = () => {
   const [isValid, setIsValid] = useState<boolean>(true);

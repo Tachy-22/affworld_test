@@ -3,9 +3,9 @@ import React, { FormEvent } from "react";
 import { Button } from "../ui/button";
 import { AlertDialogAction } from "../ui/alert-dialog";
 import createSecret from "@/actions/secrets/createSecret";
-import { useAppSelector } from "@/lib/redux-toolkit/hooks";
+import { useAppSelector } from "@/configs/redux-toolkit/hooks";
 import { useDispatch } from "react-redux";
-import { updateSecrets } from "@/lib/redux-toolkit/boardSlice";
+import { updateSecrets } from "@/configs/redux-toolkit/boardSlice";
 
 const NewSecretForm = () => {
   const dispatch = useDispatch();
@@ -45,14 +45,14 @@ const NewSecretForm = () => {
         );
 
         if (result) {
-          return
+          return;
         } else {
-           dispatch(
-             updateSecrets([
-               ...(secrets as SecretType[]),
-               secretsUpdate as SecretType,
-             ])
-           );
+          dispatch(
+            updateSecrets([
+              ...(secrets as SecretType[]),
+              secretsUpdate as SecretType,
+            ])
+          );
         }
 
         console.log({ result });

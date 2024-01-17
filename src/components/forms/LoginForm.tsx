@@ -6,7 +6,7 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 
-import { updateUserData } from "@/lib/redux-toolkit/boardSlice";
+import { updateUserData } from "@/configs/redux-toolkit/boardSlice";
 import findUser from "@/actions/user/findUser";
 import FormUi from "../ui/form/FormUi";
 import Input from "../ui/form/Input";
@@ -51,12 +51,15 @@ export default function LoginForm() {
       }
       if (res?.ok) {
         const user = await findUser(email as string);
+        setStatus("success");
         dispatch(updateUserData(user));
+
         router.replace(`/dashboard/${user?.id}`);
         setIsLoading(false);
       }
     } catch (error) {
-      console.log(error);
+      setStatus("An error occured, try again");
+
       setIsLoading(false);
     }
   };

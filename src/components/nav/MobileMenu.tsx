@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import UserButton from "../ui/user/UserButton";
-import { useAppSelector } from "@/lib/redux-toolkit/hooks";
+import { useAppSelector } from "@/configs/redux-toolkit/hooks";
 import { Session } from "next-auth";
 import SignUpButton from "../ui/boarding/SignUpButton";
 import SignInButton from "../ui/boarding/SignInButton";

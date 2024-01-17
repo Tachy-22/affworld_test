@@ -5,7 +5,7 @@ import SignUpButton from "../ui/boarding/SignUpButton";
 import SignInButton from "../ui/boarding/SignInButton";
 import UserButton from "../ui/user/UserButton";
 import Link from "next/link";
-import { useAppSelector } from "@/lib/redux-toolkit/hooks";
+import { useAppSelector } from "@/configs/redux-toolkit/hooks";
 
 const DesktopMenu = ({ session }: { session: Session | null }) => {
   const { userData } = useAppSelector((state) => state.board);

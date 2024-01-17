@@ -1,12 +1,8 @@
-import ResetComponent from "@/components/ResetComponent";
+import SendResetPWDForm from "@/components/forms/SendResetPWDForm";
 import React from "react";
 
 const page = () => {
-  return (
-    <div>
-      <ResetComponent />
-    </div>
-  );
+  return <SendResetPWDForm />;
 };
 
 export default page;

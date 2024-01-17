@@ -4,12 +4,12 @@ import sendMail from "@/actions/mailer/sendMail";
 import findUser from "@/actions/user/findUser";
 import Image from "next/image";
 import { FormEvent, useCallback, useState } from "react";
-import Input from "./ui/form/Input";
-import FormUi from "./ui/form/FormUi";
-import SubmitButton from "./ui/form/SubmitButton";
-import Status from "./ui/form/Status";
+import Input from "../ui/form/Input";
+import FormUi from "../ui/form/FormUi";
+import SubmitButton from "../ui/form/SubmitButton";
+import Status from "../ui/form/Status";
 
-const ResetComponent = () => {
+const SendResetPWDForm = () => {
   const [status, setStatus] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -28,15 +28,15 @@ const ResetComponent = () => {
       setStatus("success");
       setIsLoading(false);
       const resetLink = `${origin}/reset-password/${user?.id}`;
-      const result = await sendMail(email, resetLink);
+      const result = await sendMail(email, resetLink, user?.name as string);
       return result;
     };
     try {
       sendResetLink().then((res) => {
         setIsLoading(false);
-        console.log({ res });
       });
     } catch (error) {
+      setStatus("An error occured, try again");
       setIsLoading(false);
       console.error({ error });
     }
@@ -66,4 +66,4 @@ const ResetComponent = () => {
   );
 };
 
-export default ResetComponent;
+export default SendResetPWDForm;

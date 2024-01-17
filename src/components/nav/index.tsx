@@ -5,10 +5,10 @@ import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 import { Session } from "next-auth";
 import { useDispatch } from "react-redux";
-import { useAppSelector } from "@/lib/redux-toolkit/hooks";
+import { useAppSelector } from "@/configs/redux-toolkit/hooks";
 import findUser from "@/actions/user/findUser";
 import { useSession } from "next-auth/react";
-import { updateUserData } from "@/lib/redux-toolkit/boardSlice";
+import { updateUserData } from "@/configs/redux-toolkit/boardSlice";
 import Link from "next/link";
 
 const Nav = ({ session }: { session: Session | null }) => {

@@ -1,5 +1,5 @@
 "use client";
-import { useAppSelector } from "@/lib/redux-toolkit/hooks";
+import { useAppSelector } from "@/configs/redux-toolkit/hooks";
 import React from "react";
 import SecretCard from "./SecretCard";
 import { Skeleton } from "../ui/skeleton";

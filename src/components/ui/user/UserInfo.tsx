@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
-import LogOutButton from "../ui/boarding/LogOutButton";
+import LogOutButton from "../boarding/LogOutButton";
 
 export default function UserInfo() {
   const { data: session } = useSession();

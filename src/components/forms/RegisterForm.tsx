@@ -61,6 +61,8 @@ export default function RegisterForm() {
         if (user) {
           const form = e.target as HTMLFormElement;
           setIsLoading(false);
+          setStatus("success");
+
           form.reset();
           router.push("/login");
         } else {
@@ -70,6 +72,7 @@ export default function RegisterForm() {
     } catch (error) {
       setIsLoading(false);
       console.error("error during registration: ", error);
+      setStatus("An error occured, try again");
     }
   };
 

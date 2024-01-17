@@ -9,7 +9,7 @@ To set up and run the project locally, follow these steps:
 1. Clone the repository to your local machine:
 
     ```bash
-    git clone https://github.com/your-username/your-repo.git
+    https://github.com/Tachy-22/affworld_test.git
     ```
 
 2. Navigate to the project directory:
@@ -61,6 +61,12 @@ To set up and run the project locally, follow these steps:
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Features
+
+- Password recovery is implemented using [Nodemailer](https://nodemailer.com/).
+- The application uses MongoDB as the database. Make sure to replace the placeholder in `.env` with your MongoDB connection string.
+- [Prisma](https://www.prisma.io/) is utilized for database interaction.
 
 ## Learn More
 

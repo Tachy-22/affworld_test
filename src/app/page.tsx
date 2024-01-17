@@ -12,7 +12,7 @@ export default async function Home() {
       }}
       className="flex min-h-screen flex-col pt-[4rem] items-center justify-center"
     >
-      <div className="max-w-7xl h-full xl:px-0 px-[10%]  items-center lg:flex-row  flex-col flex justify-between mx-auto py-[2rem]">
+      <div className="max-w-7xl h-full xl:px-0 px-[10%] items-start  lg:items-center lg:flex-row  flex-col flex justify-between mx-auto py-[2rem]">
         <section className="text-start flex-col flex w-full gap-[2rem]  h-full">
           <h1 className="text-5xl md:text-6xl font-bold">
             {" "}
